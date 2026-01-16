@@ -31,9 +31,6 @@ brew install xstatus
 ```
 *(Note: Homebrew formula might need to be updated or tapped from this repository depending on distribution)*
 
-### Legacy version
-Legacy version for older systems could be found [here](https://mac-stats.com/downloads).
-
 ## Requirements
 XStatus is supported on the released macOS version starting from macOS 10.15 (Catalina).
 
