@@ -10,34 +10,35 @@
 
 ---
 
-# Stats
+# XStatus
 
-<a href="https://github.com/exelban/stats/releases"><p align="center"><img src="https://github.com/exelban/stats/raw/master/Stats/Supporting%20Files/Assets.xcassets/AppIcon.appiconset/icon_256x256.png" width="120"></p></a>
+<a href="https://github.com/kishimi8/XStatus/releases"><p align="center"><img src="https://github.com/exelban/stats/raw/master/Stats/Supporting%20Files/Assets.xcassets/AppIcon.appiconset/icon_256x256.png" width="120"></p></a>
 
-[![Stats](https://serhiy.s3.eu-central-1.amazonaws.com/Github_repo/stats/menus%3Fv2.3.2.png?v1)](https://github.com/exelban/stats/releases)
-[![Stats](https://serhiy.s3.eu-central-1.amazonaws.com/Github_repo/stats/popups%3Fv2.3.2.png?v3)](https://github.com/exelban/stats/releases)
+[![XStatus](https://serhiy.s3.eu-central-1.amazonaws.com/Github_repo/stats/menus%3Fv2.3.2.png?v1)](https://github.com/kishimi8/XStatus/releases)
+[![XStatus](https://serhiy.s3.eu-central-1.amazonaws.com/Github_repo/stats/popups%3Fv2.3.2.png?v3)](https://github.com/kishimi8/XStatus/releases)
 
 macOS system monitor in your menu bar
 
 ## Installation
 ### Manual
-You can download the latest version [here](https://github.com/exelban/stats/releases/latest/download/Stats.dmg).
-This will download a file called `Stats.dmg`. Open it and move the app to the application folder.
+You can download the latest version [here](https://github.com/kishimi8/XStatus/releases/latest/download/XStatus.dmg).
+This will download a file called `XStatus.dmg`. Open it and move the app to the application folder.
 
 ### Homebrew
 To install it using Homebrew, open the Terminal app and type:
 ```bash
-brew install stats
+brew install xstatus
 ```
+*(Note: Homebrew formula might need to be updated or tapped from this repository depending on distribution)*
 
 ### Legacy version
 Legacy version for older systems could be found [here](https://mac-stats.com/downloads).
 
 ## Requirements
-Stats is supported on the released macOS version starting from macOS 10.15 (Catalina).
+XStatus is supported on the released macOS version starting from macOS 10.15 (Catalina).
 
 ## Features
-Stats is an application that allows you to monitor your macOS system.
+XStatus is an application that allows you to monitor your macOS system.
 
  - CPU utilization
  - GPU utilization
@@ -53,7 +54,7 @@ Stats is an application that allows you to monitor your macOS system.
 ## FAQs
 
 ### How do you change the order of the menu bar icons?
-macOS decides the order of the menu bar items not `Stats` - it may change after the first reboot after installing Stats.
+macOS decides the order of the menu bar items not `XStatus` - it may change after the first reboot after installing XStatus.
 
 To change the order of any menu bar icon - macOS Mojave (version 10.14) and up.
 
@@ -61,26 +62,26 @@ To change the order of any menu bar icon - macOS Mojave (version 10.14) and up.
 2. Drag the icon to the desired position on the menu bar.
 3. Release ⌘ (command key)
 
-### How to reduce energy impact or CPU usage of Stats?
-Stats tries to be efficient as it's possible. But reading some data periodically is not a cheap task. Each module has its own "price". So, if you want to reduce energy impact from the Stats you need to disable some Stats modules. The most inefficient modules are Sensors and Bluetooth. Disabling these modules could reduce CPU usage and power efficiency by up to 50% in some cases.
+### How to reduce energy impact or CPU usage of XStatus?
+XStatus tries to be efficient as it's possible. But reading some data periodically is not a cheap task. Each module has its own "price". So, if you want to reduce energy impact from the XStatus you need to disable some XStatus modules. The most inefficient modules are Sensors and Bluetooth. Disabling these modules could reduce CPU usage and power efficiency by up to 50% in some cases.
 
 ### Fan control
 Fan control is in legacy mode. It does not receive any updates or fixes. It's not dropped from the app just because in the old Macs it works pretty acceptable. I'm open to accepting fixed or improvements (via PR) for this feature in case someone would like to help with that. But have no option and time to provide support for this feature.
 
 ### Sensors show incorrect CPU/GPU core count
 CPU/GPU sensors are simply thermal zones (sensors) on the CPU/GPU. They have no relation to the number of cores or specific cores.
-For example, a CPU is typically divided into two clusters: efficiency and performance. Each cluster contains multiple temperature sensors, and Stats simply displays these sensors. However, "CPU Efficient Core 1" does not represent the temperature of a single efficient core—it only indicates one of the temperature sensors within the efficiency core cluster.
+For example, a CPU is typically divided into two clusters: efficiency and performance. Each cluster contains multiple temperature sensors, and XStatus simply displays these sensors. However, "CPU Efficient Core 1" does not represent the temperature of a single efficient core—it only indicates one of the temperature sensors within the efficiency core cluster.
 Additionally, with each new SoC, Apple changes the sensor keys. As a result, it takes time to determine which SMC values correspond to the appropriate sensors. If anyone knows how to accurately match the sensors for Apple Silicon, please contact me.
 
 ### App crash – what to do?
-First, ensure that you are using the latest version of Stats. There is a high chance that a fix preventing the crash has already been released. If you are already running the latest version, check the open issues. Only if none of the existing issues address your problem should you open a new issue.
+First, ensure that you are using the latest version of XStatus. There is a high chance that a fix preventing the crash has already been released. If you are already running the latest version, check the open issues. Only if none of the existing issues address your problem should you open a new issue.
 
 ### Why my issue was closed without any response?
 Most probably because it's a duplicated issue and there is an answer to the question, report, or proposition. Please use a search by closed issues to get an answer.
 So, if your issue was closed without any response, most probably it already has a response.
 
 ### External API
-Stats uses some external APIs, such as:
+XStatus uses some external APIs, such as:
 
 - https://api.mac-stats.com – For update checks and retrieving the public IP address
 - https://api.github.com – Fallback for update checks
@@ -133,4 +134,4 @@ If you have concerns about these requests, you have a few options:
 You can help by adding a new language or improving the existing translation.
 
 ## License
-[MIT License](https://github.com/exelban/stats/blob/master/LICENSE)
+[MIT License](https://github.com/kishimi8/XStatus/blob/main/LICENSE)
