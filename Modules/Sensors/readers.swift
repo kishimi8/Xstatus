@@ -146,7 +146,7 @@ internal class SensorsReader: Reader<Sensors_List> {
         if self.HIDState {
             for typ in SensorsReader.HIDtypes {
                 let (page, usage, type) = self.m1Preset(type: typ)
-                AppleSiliconSensors(page, usage, type)?.forEach { (key, value) in
+                appleSiliconSensors(page, usage, type)?.forEach { (key, value) in
                     guard let key = key as? String, let value = value as? Double, value < 300 && value >= 0 else {
                         return
                     }
@@ -414,7 +414,7 @@ extension SensorsReader {
         
         for typ in SensorsReader.HIDtypes {
             let (page, usage, type) = self.m1Preset(type: typ)
-            if let sensors = AppleSiliconSensors(page, usage, type) {
+            if let sensors = appleSiliconSensors(page, usage, type) {
                 sensors.forEach { (key, value) in
                     guard let key = key as? String, let value = value as? Double else {
                         return

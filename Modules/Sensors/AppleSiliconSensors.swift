@@ -5,7 +5,7 @@ internal func IOHIDEventFieldBase(_ type: Int32) -> Int32 {
     return type << 16
 }
 
-public func AppleSiliconSensors(_ page: Int32, _ usage: Int32, _ type: Int32) -> [String: Any]? {
+public func appleSiliconSensors(_ page: Int32, _ usage: Int32, _ type: Int32) -> [String: Any]? {
     let dictionary: [String: Any] = [
         "PrimaryUsagePage": page,
         "PrimaryUsage": usage

@@ -871,7 +871,7 @@ public class SMCHelper {
     public static let shared = SMCHelper()
     
     public var isInstalled: Bool {
-        syncShell("ls /Library/PrivilegedHelperTools/").contains("eu.exelban.Stats.SMC.Helper")
+        syncShell("ls /Library/PrivilegedHelperTools/").contains("ng.kishimi8.XStatus.SMC.Helper")
     }
     
     private var connection: NSXPCConnection? = nil
@@ -899,7 +899,7 @@ public class SMCHelper {
     }
     
     public func checkForUpdate() {
-        let helperURL = Bundle.main.bundleURL.appendingPathComponent("Contents/Library/LaunchServices/eu.exelban.Stats.SMC.Helper")
+        let helperURL = Bundle.main.bundleURL.appendingPathComponent("Contents/Library/LaunchServices/ng.kishimi8.XStatus.SMC.Helper")
         guard let helperBundleInfo = CFBundleCopyInfoDictionaryForURL(helperURL as CFURL) as? [String: Any],
               let helperVersion = helperBundleInfo["CFBundleShortVersionString"] as? String,
               let helper = self.helper(nil) else { return }
@@ -952,7 +952,7 @@ public class SMCHelper {
         }
         
         var error: Unmanaged<CFError>?
-        if SMJobBless(kSMDomainUserLaunchd, "eu.exelban.Stats.SMC.Helper" as CFString, authRef, &error) == false {
+        if SMJobBless(kSMDomainUserLaunchd, "ng.kishimi8.XStatus.SMC.Helper" as CFString, authRef, &error) == false {
             let blessError = error!.takeRetainedValue() as Error
             print("Error while installing the Helper: \(blessError.localizedDescription)")
             completion(false)
@@ -968,7 +968,7 @@ public class SMCHelper {
             return self.connection
         }
         
-        let connection = NSXPCConnection(machServiceName: "eu.exelban.Stats.SMC.Helper", options: .privileged)
+        let connection = NSXPCConnection(machServiceName: "ng.kishimi8.XStatus.SMC.Helper", options: .privileged)
         connection.exportedObject = self
         connection.remoteObjectInterface = NSXPCInterface(with: HelperProtocol.self)
         connection.invalidationHandler = {

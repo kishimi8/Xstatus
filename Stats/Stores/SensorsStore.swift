@@ -27,7 +27,6 @@ public class SensorsStore: ObservableObject {
         self.sensorsReader?.start()
     }
     
-    
     public func stop() {
         self.sensorsReader?.stop()
         self.resetFans()
