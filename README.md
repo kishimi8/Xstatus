@@ -43,6 +43,7 @@ XStatus is an application that allows you to monitor your macOS system.
  - Disk utilization
  - Network usage
  - Battery level
+ - Virtualization (Docker containers monitoring)
  - Fan's control (not maintained)
  - Sensors information (Temperature/Voltage/Power)
  - Bluetooth devices
@@ -89,46 +90,6 @@ If you have concerns about these requests, you have a few options:
 
 - propose a PR that allows these features to work without an external server
 - block both of these servers using any network filtering app (if you're reading this, you're likely using something like Little Snitch, so you can easily do this). In this case do not expect to receive any updates or see your public IP in the network module.
-
-
-## Supported languages
-- English
-- Polski
-- Українська
-- Русский
-- 中文 (简体) (thanks to [chenguokai](https://github.com/chenguokai), [Tai-Zhou](https://github.com/Tai-Zhou), and [Jerry](https://github.com/Jerry23011))
-- Türkçe (thanks to [yusufozgul](https://github.com/yusufozgul) and [setanarut](https://github.com/setanarut))
-- 한국어 (thanks to [escapeanaemia](https://github.com/escapeanaemia) and [iamhslee](https://github.com/iamhslee))
-- German (thanks to [natterstefan](https://github.com/natterstefan) and [aneitel](https://github.com/aneitel))
-- 中文 (繁體) (thanks to [iamch15542](https://github.com/iamch15542) and [jrthsr700tmax](https://github.com/jrthsr700tmax))
-- Spanish (thanks to [jcconca](https://github.com/jcconca))
-- Vietnamese (thanks to [HXD.VN](https://github.com/xuandung38))
-- French (thanks to [RomainLt](https://github.com/RomainLt))
-- Italian (thanks to [gmcinalli](https://github.com/gmcinalli))
-- Portuguese (Brazil) (thanks to [marcelochaves95](https://github.com/marcelochaves95) and [pedroserigatto](https://github.com/pedroserigatto))
-- Norwegian Bokmål (thanks to [rubjo](https://github.com/rubjo))
-- 日本語 (thanks to [treastrain](https://github.com/treastrain))
-- Portuguese (Portugal) (thanks to [AdamModus](https://github.com/AdamModus))
-- Czech (thanks to [mpl75](https://github.com/mpl75))
-- Magyar (thanks to [moriczr](https://github.com/moriczr))
-- Bulgarian (thanks to [zbrox](https://github.com/zbrox))
-- Romanian (thanks to [razluta](https://github.com/razluta))
-- Dutch (thanks to [ngohungphuc](https://github.com/ngohungphuc))
-- Hrvatski (thanks to [milotype](https://github.com/milotype))
-- Danish (thanks to [casperes1996](https://github.com/casperes1996) and [aleksanderbl29](https://github.com/aleksanderbl29))
-- Catalan (thanks to [davidalonso](https://github.com/davidalonso))
-- Indonesian (thanks to [yooody](https://github.com/yooody))
-- Hebrew (thanks to [BadSugar](https://github.com/BadSugar))
-- Slovenian (thanks to [zigapovhe](https://github.com/zigapovhe))
-- Greek (thanks to [sudoxcess](https://github.com/sudoxcess) and [vaionicle](https://github.com/vaionicle))
-- Persian (thanks to [ShawnAlisson](https://github.com/ShawnAlisson))
-- Slovenský (thanks to [martinbernat](https://github.com/martinbernat))
-- Thai (thanks to [apiphoomchu](https://github.com/apiphoomchu))
-- Estonian (thanks to [postylem](https://github.com/postylem))
-- Hindi (thanks to [patiljignesh](https://github.com/patiljignesh))
-- Finnish (thanks to [eightscrow](https://github.com/eightscrow))
-
-You can help by adding a new language or improving the existing translation.
 
 ## License
 [MIT License](https://github.com/kishimi8/XStatus/blob/main/LICENSE)
