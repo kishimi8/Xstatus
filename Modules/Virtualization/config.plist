@@ -19,10 +19,17 @@
 			<key>Preview</key>
 			<dict>
 				<key>Value</key>
-				<string>0</string>
+				<string>0.01</string>
 			</dict>
 			<key>Order</key>
 			<integer>0</integer>
+		</dict>
+		<key>state</key>
+		<dict>
+			<key>Default</key>
+			<false/>
+			<key>Order</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>Settings</key>

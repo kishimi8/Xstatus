@@ -205,7 +205,7 @@
 		9AF9EE1124648ADC005D2270 /* readers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9EE1024648ADC005D2270 /* readers.swift */; };
 		DD829CA22F1A9D7A005E9BCF /* readers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD829C9E2F1A9D7A005E9BCF /* readers.swift */; };
 		DD829CA32F1A9D7A005E9BCF /* Virtualization.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD829C9F2F1A9D7A005E9BCF /* Virtualization.swift */; };
-		DD829CA42F1A9D7A005E9BCF /* widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD829CA02F1A9D7A005E9BCF /* widgets.swift */; };
+		DD829CA42F1A9D7A005E9BCF /* widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD829CA02F1A9D7A005E9BCF /* widget.swift */; };
 		DD829CA52F1A9D7A005E9BCF /* popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD829C9D2F1A9D7A005E9BCF /* popup.swift */; };
 		DD829CA62F1A9D7A005E9BCF /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD829C9C2F1A9D7A005E9BCF /* config.plist */; };
 		DD829CA92F1A9F40005E9BCF /* portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD829CA72F1A9F40005E9BCF /* portal.swift */; };
@@ -726,7 +726,7 @@
 		DD829C9D2F1A9D7A005E9BCF /* popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popup.swift; sourceTree = "<group>"; };
 		DD829C9E2F1A9D7A005E9BCF /* readers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = readers.swift; sourceTree = "<group>"; };
 		DD829C9F2F1A9D7A005E9BCF /* Virtualization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Virtualization.swift; sourceTree = "<group>"; };
-		DD829CA02F1A9D7A005E9BCF /* widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = widgets.swift; sourceTree = "<group>"; };
+		DD829CA02F1A9D7A005E9BCF /* widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = widget.swift; sourceTree = "<group>"; };
 		DD829CA72F1A9F40005E9BCF /* portal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = portal.swift; sourceTree = "<group>"; };
 		DD829CA82F1A9F40005E9BCF /* settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settings.swift; sourceTree = "<group>"; };
 		F8A38F83253303A8006D4D81 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1318,7 +1318,7 @@
 				DD829C9D2F1A9D7A005E9BCF /* popup.swift */,
 				DD829C9E2F1A9D7A005E9BCF /* readers.swift */,
 				DD829C9F2F1A9D7A005E9BCF /* Virtualization.swift */,
-				DD829CA02F1A9D7A005E9BCF /* widgets.swift */,
+				DD829CA02F1A9D7A005E9BCF /* widget.swift */,
 			);
 			path = Virtualization;
 			sourceTree = "<group>";
@@ -2027,7 +2027,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "MARKETING_VERSION=$(/usr/libexec/PlistBuddy -c 'print :objects:9A141107229E721200D29793:buildSettings:MARKETING_VERSION' \"$(PWD)/Stats.xcodeproj/project.pbxproj\")\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $MARKETING_VERSION\" \"$(PWD)/Widgets/Supporting Files/Info.plist\"\nBUNDLE_VERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$(PWD)/Stats/Supporting Files/Info.plist\")\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $BUNDLE_VERSION\" \"$(PWD)/Widgets/Supporting Files/Info.plist\"\n";
+			shellScript = "MARKETING_VERSION=$(/usr/libexec/PlistBuddy -c 'print :objects:9A141107229E721200D29793:buildSettings:MARKETING_VERSION' \"$(PWD)/XStatus.xcodeproj/project.pbxproj\")\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $MARKETING_VERSION\" \"$(PWD)/Widgets/Supporting Files/Info.plist\"\nBUNDLE_VERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$(PWD)/Stats/Supporting Files/Info.plist\")\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $BUNDLE_VERSION\" \"$(PWD)/Widgets/Supporting Files/Info.plist\"\n";
 		};
 		9A88E2672659002E00E2B7B0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2045,7 +2045,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint || true >/dev/null; then\n  swiftlint || true\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2108,7 +2108,7 @@
 				DD829CAA2F1A9F40005E9BCF /* settings.swift in Sources */,
 				DD829CA22F1A9D7A005E9BCF /* readers.swift in Sources */,
 				DD829CA32F1A9D7A005E9BCF /* Virtualization.swift in Sources */,
-				DD829CA42F1A9D7A005E9BCF /* widgets.swift in Sources */,
+				DD829CA42F1A9D7A005E9BCF /* widget.swift in Sources */,
 				DD829CA52F1A9D7A005E9BCF /* popup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -50,13 +50,23 @@ public class Virtualization: Module {
     private func callback(_ value: Containers_List?) {
         guard let list = value, self.enabled else { return }
         
+        if let data = try? JSONEncoder().encode(list) {
+            self.userDefaults?.set(data, forKey: "Virtualization@DockerReader")
+        }
+        
         DispatchQueue.main.async {
             self.popupView.setup(list)
             
-            // Update widget
-            if let widget = self.menuBar.widgets.first(where: { $0.isActive }) as? Mini {
-                widget.setValue(Double(list.count))
-                widget.setTitle(String(list.count)) 
+            // Update widgets
+            self.menuBar.widgets.filter({ $0.isActive }).forEach { (w: SWidget) in
+                switch w.item {
+                case let widget as Mini:
+                    widget.setSuffix("")
+                    widget.setValue(Double(list.count) / 100.0)
+                case let widget as StateWidget:
+                    widget.setValue(!list.isEmpty)
+                default: break
+                }
             }
         }
     }

@@ -12,7 +12,7 @@
 import Cocoa
 import Kit
 
-internal class VirtualizationSettings: NSStackView, Settings_v {
+internal class VirtualizationSettings: NSStackView, Settings_v, NSTextFieldDelegate {
     private var updateIntervalValue: Int = 1
     private let title: String
     
@@ -41,10 +41,14 @@ internal class VirtualizationSettings: NSStackView, Settings_v {
         let socketPath = Store.shared.string(key: "DockerReader_socketPath", defaultValue: "/var/run/docker.sock")
         let socketPathField = NSTextField()
         socketPathField.stringValue = socketPath
+        socketPathField.placeholderString = "e.g. /var/run/docker.sock, 127.0.0.1:2375 or socat:127.0.0.1:2375"
         socketPathField.isEditable = true
+        socketPathField.isSelectable = true
         socketPathField.font = NSFont.systemFont(ofSize: 12, weight: .regular)
         socketPathField.target = self
         socketPathField.action = #selector(self.changeSocketPath)
+        socketPathField.delegate = self
+        socketPathField.widthAnchor.constraint(equalToConstant: 250).isActive = true
         
         let onlyRunning = Store.shared.bool(key: "Virtualization_onlyRunning", defaultValue: false)
         
@@ -54,7 +58,7 @@ internal class VirtualizationSettings: NSStackView, Settings_v {
                 items: ReaderUpdateIntervals,
                 selected: "\(self.updateIntervalValue)"
             )),
-            PreferencesRow(localizedString("Socket path"), component: socketPathField),
+            PreferencesRow(localizedString("Socket path (Unix, TCP or Socat)"), component: socketPathField),
             PreferencesRow(localizedString("Show only running containers"), component: switchView(
                 action: #selector(self.toggleOnlyRunning),
                 state: onlyRunning
@@ -76,5 +80,12 @@ internal class VirtualizationSettings: NSStackView, Settings_v {
     
     @objc private func toggleOnlyRunning(_ sender: NSSwitch) {
         Store.shared.set(key: "Virtualization_onlyRunning", value: sender.state == .on)
+    }
+    
+    func controlTextDidChange(_ notification: Notification) {
+        if let field = notification.object as? NSTextField {
+            Store.shared.set(key: "DockerReader_socketPath", value: field.stringValue)
+            self.setSocketPath(field.stringValue)
+        }
     }
 }

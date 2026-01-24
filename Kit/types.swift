@@ -425,3 +425,55 @@ public struct DeviceResponse: Codable {
     public let verification_uri_complete: URL
     public let interval: Int?
 }
+
+public struct Port: Codable {
+    public let privatePort: Int
+    public let publicPort: Int?
+    public let type: String
+    
+    public init(privatePort: Int, publicPort: Int?, type: String) {
+        self.privatePort = privatePort
+        self.publicPort = publicPort
+        self.type = type
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case privatePort = "PrivatePort"
+        case publicPort = "PublicPort"
+        case type = "Type"
+    }
+}
+
+public struct Container: Codable {
+    public let id: String
+    public let names: [String]
+    public let image: String
+    public let state: String
+    public let status: String
+    public let ports: [Port]?
+    
+    public var cpu: Double? = nil
+    public var ram: Int64? = nil
+    public var cpuHistory: [Double] = []
+    public var ramHistory: [Double] = []
+    
+    public init(id: String, names: [String], image: String, state: String, status: String, ports: [Port]?) {
+        self.id = id
+        self.names = names
+        self.image = image
+        self.state = state
+        self.status = status
+        self.ports = ports
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "Id"
+        case names = "Names"
+        case image = "Image"
+        case state = "State"
+        case status = "Status"
+        case ports = "Ports"
+    }
+}
+
+public typealias Containers_List = [Container]
