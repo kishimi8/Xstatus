@@ -79,17 +79,9 @@ Most probably because it's a duplicated issue and there is an answer to the ques
 So, if your issue was closed without any response, most probably it already has a response.
 
 ### External API
-XStatus uses some external APIs, such as:
+XStatus uses GitHub API to check for updates:
 
-- https://api.mac-stats.com – For update checks and retrieving the public IP address
-- https://api.github.com – Fallback for update checks
-
-Both of these APIs are used to check for updates. Additionally, an external request is required to obtain the public IP address. I do not want to use any third-party providers for retrieving the public IP address, so I use my own server for this purpose.
-
-If you have concerns about these requests, you have a few options:
-
-- propose a PR that allows these features to work without an external server
-- block both of these servers using any network filtering app (if you're reading this, you're likely using something like Little Snitch, so you can easily do this). In this case do not expect to receive any updates or see your public IP in the network module.
+- https://api.github.com – For update checks
 
 ## License
 [MIT License](https://github.com/kishimi8/XStatus/blob/main/LICENSE)

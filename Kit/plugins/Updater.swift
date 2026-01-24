@@ -60,9 +60,13 @@ public class Updater {
         }
     }
     
-    public init(github: String, url: String) {
+    public init(github: String, url: String? = nil) {
         self.github = URL(string: "https://api.github.com/repos/\(github)/releases/latest")!
-        self.server = URL(string: "\(url)?macOS=\(ProcessInfo().operatingSystemVersion.getFullVersion())")!
+        if let url = url {
+            self.server = URL(string: "\(url)?macOS=\(ProcessInfo().operatingSystemVersion.getFullVersion())")!
+        } else {
+            self.server = self.github
+        }
     }
     
     deinit {
@@ -83,6 +87,23 @@ public class Updater {
         
         defer {
             self.lastCheckTS = Int(Date().timeIntervalSince1970)
+        }
+        
+        if self.server == self.github {
+            self.fetchRelease(uri: self.github) { (result, err) in
+                guard let result = result, err == nil else {
+                    completion(nil, err)
+                    return
+                }
+                
+                completion(version_s(
+                    current: self.currentVersion,
+                    latest: result.tag,
+                    newest: isNewestVersion(currentVersion: self.currentVersion, latestVersion: result.tag),
+                    url: result.url
+                ), nil)
+            }
+            return
         }
         
         self.fetchRelease(uri: self.server) { (result, err) in

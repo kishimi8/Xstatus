@@ -450,32 +450,24 @@ internal class UsageReader: Reader<Network_Usage>, CWEventDelegate {
         guard self.publicIPState else { return }
         
         struct Addr_s: Decodable {
-            let ipv4: String?
-            let ipv6: String?
-            let country: String?
+            let ip: String?
         }
         
         DispatchQueue.global(qos: .userInitiated).async {
-            let response = syncShell("curl -s -4 https://api.mac-stats.com/ip")
+            let response = syncShell("curl -s -4 https://api.ipify.org?format=json")
             if !response.isEmpty, let data = response.data(using: .utf8),
                let addr = try? JSONDecoder().decode(Addr_s.self, from: data) {
-                if let ip = addr.ipv4, self.isIPv4(ip) {
+                if let ip = addr.ip, self.isIPv4(ip) {
                     self.usage.raddr.v4 = ip
-                }
-                if let countryCode = addr.country {
-                    self.usage.raddr.countryCode = countryCode
                 }
             }
         }
         DispatchQueue.global(qos: .userInitiated).async {
-            let response = syncShell("curl -s -6 https://api.mac-stats.com/ip")
+            let response = syncShell("curl -s -6 https://api64.ipify.org?format=json")
             if !response.isEmpty, let data = response.data(using: .utf8),
                let addr = try? JSONDecoder().decode(Addr_s.self, from: data) {
-                if let ip = addr.ipv6, !self.isIPv4(ip) {
+                if let ip = addr.ip, !self.isIPv4(ip) {
                     self.usage.raddr.v6 = ip
-                }
-                if let countryCode = addr.country {
-                    self.usage.raddr.countryCode = countryCode
                 }
             }
         }
